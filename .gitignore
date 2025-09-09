@@ -1,6 +1,7 @@
 #Enor
 .svg
 .csv
+.crf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -197,3 +198,5 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 bezier_curve.svg
+Lajiryhmäeditori.csv
+output.crf

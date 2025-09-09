@@ -3,13 +3,23 @@ import pandas as pd
 # Load CSV with ; as delimiter
 df = pd.read_csv("Lajiryhmäeditori.csv", delimiter=";")
 
-# Select needed columns
-df_out = df[["Tunnus", "Nimi"]].copy()
+# Function to decide "POLYLINEZ" or "POINTZ"
+def choose_type(row):
+    taulun_nimi = str(row.get("Taulun nimi", "")).lower()
+    if "viiva" in taulun_nimi:
+        return "POLYLINEZ"
+    return "POINTZ"
 
-# Add constant "Line" column
-df_out.insert(1, "Const", "Line")
+# Apply function to each row
+df["Const"] = df.apply(choose_type, axis=1)
+
+# Filter out rows where Tyyppi == "Ryhmä"
+df = df[df["Tyyppi"] != "Ryhmä"]
+
+# Select needed columns
+df_out = df[["Tunnus", "Const", "Nimi"]]
 
 # Write to file in required format (tab-separated, quoted)
-with open("output.txt", "w", encoding="utf-8") as f:
+with open("output.crf", "w", encoding="utf-8") as f:
     for _, row in df_out.iterrows():
         f.write(f"\"{row['Tunnus']}\"\t\"{row['Const']}\"\t\"{row['Nimi']}\"\n")
