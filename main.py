@@ -9,6 +9,8 @@ def choose_type(row):
     taulun_nimi = str(row.get("Taulun nimi", "")).lower()
     if "viiva" in taulun_nimi:
         return "Line"
+    elif "teksti" in taulun_nimi:
+        return "Text"
     return "Symbol"
 
 # Apply function to each row
