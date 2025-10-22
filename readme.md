@@ -1,6 +1,6 @@
 # Locus Automatic CRF generator 
 
-This Python script converts data from `Lajiryhmäeditori.csv` into a cross reference file. You can export the CSV from Locus Cloud's admin tools.
+This Python script converts types from `Lajiryhmäeditori.csv` into a cross reference file where each type is it's seperate layer. You can export the CSV from Locus Cloud's admin tools.
 
 ---
 
